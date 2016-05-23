@@ -104,7 +104,7 @@ void loop()
   
   // Use non-blocking heating to avoid locking up the piston mechanism and the other functionalities
   if(DELAY_DONE(heating)) {
-  	if(DELAY_DONE(pouring) {
+  	if(DELAY_DONE(pouring)) {
   	  // Check if we need to stop pumping water to let
   	  // the heater warm up
   	  float error = temperature - TARGET_TEMP;
