@@ -43,7 +43,7 @@ DELAY_DECLARE(pouring);
 
 void setup()
 {  
-  Serial.begin(9600);
+  Serial.begin(1200);
   pinMode(MS1, OUTPUT);
   pinMode(MS2, OUTPUT);
   pinMode(STEP, OUTPUT);
@@ -80,17 +80,17 @@ void loop()
   if(digitalRead(UP_KEY) == LOW && !isGoingUp) {
     isGoingDown = false;
     isGoingUp = true;
-    TCCR2B = (TCCR2B & 0b11111000) | 0x03;
+    TCCR2B = (TCCR2B & 0b11111000) | 0x04;
     digitalWrite(DIR, LOW);
     delay(500);
-    TCCR2B = (TCCR2B & 0b11111000) | 0x02;
+    TCCR2B = (TCCR2B & 0b11111000) | 0x03;
   } else if(digitalRead(DOWN_KEY) == LOW && !isGoingDown) {
     isGoingDown = true;
     isGoingUp = false;
-    TCCR2B = (TCCR2B & 0b11111000) | 0x03;
+    TCCR2B = (TCCR2B & 0b11111000) | 0x04;
     digitalWrite(DIR, HIGH);
     delay(500);
-    TCCR2B = (TCCR2B & 0b11111000) | 0x02;
+    TCCR2B = (TCCR2B & 0b11111000) | 0x03;
   } else if(digitalRead(UP_KEY) == HIGH && digitalRead(DOWN_KEY) == HIGH) {
     isGoingDown = false;
     isGoingUp = false;
